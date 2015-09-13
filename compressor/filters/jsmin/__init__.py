@@ -5,6 +5,9 @@ from compressor.filters.jsmin.slimit import SlimItFilter  # noqa
 
 class rJSMinFilter(CallbackOutputFilter):
     callback = "compressor.filters.jsmin.rjsmin.jsmin"
+    kwargs = {
+        "keep_bang_comments": True
+    }
 
 # This is for backwards compatibility
 JSMinFilter = rJSMinFilter
