@@ -316,7 +316,7 @@ class Compressor(object):
         new_filepath = self.get_filepath(content, basename=basename)
         if not self.storage.exists(new_filepath) or forced:
             self.storage.save(new_filepath, ContentFile(content.encode(self.charset)))
-        new_filepath = self.storage.post_process({new_filepath: (self.storage, new_filepath)}).next()[1]
+        self.storage.post_process({new_filepath: (self.storage, new_filepath)}).next()
         url = mark_safe(self.storage.url(new_filepath))
         return self.render_output(mode, {"url": url})
 
